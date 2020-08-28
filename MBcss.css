@@ -1,0 +1,212 @@
+body {
+  height: 150vh;
+  width: 98vw;
+  background-image: linear-gradient(#ebebeb 15%, #d2d2d7 15%, #d2d2d7 80%, white 80%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  margin: 0px;
+}	
+/* TITLE in LOGO */
+
+div.top{
+	position: relative;
+	float: left;
+	top: 4.5%;
+	left: 13%;
+}
+h1 {
+	font-size: 40px;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	color: #1E90FF;
+}
+h2 {
+	font-size: 45px;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	color: #1E90FF;
+}
+
+h4 {
+	font-size: 30px;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	color: tomato;
+	margin-bottom: -5px;
+}
+
+
+/* navigation bar */
+
+ul {
+	width: 500px;
+	height: 50px;
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ebebeb;
+	position: relative;
+	float: right;
+	right: 11.5%;
+	top: 9.6%;
+	border: 1.5px solid #961;
+}
+li {
+	font-size: 20px;
+	font-family: curier;
+	font-weight: bold;
+}
+li a{
+	position: relative;
+	float: right;
+	color: #222;
+    text-align: center;
+    padding: 15px 15px;
+    text-decoration: none;
+}
+li a:hover:not(.active) {
+	color: tomato;
+}
+.active {
+	color:	#1E90FF;
+	}
+/* sredina */
+
+div.presledek {
+	clear: both; 	
+}
+
+div.special {
+	clear: left;
+}
+	
+div.heading {
+	position: relative;
+	float: left;
+	left: 12%;
+	top: 1.5%;
+	width: 750px;
+	color: #111;
+	/* line-height: 12px; */
+	}
+div.headingap {
+	position: relative;
+	float: left;
+	left: 12%;
+	top: 2%;
+	width: 1300px;
+	color: #111;
+	}
+
+div.headingstat {
+	position: relative;
+	float: left;
+	left: 12%;
+	top: 4%;
+	width: 910px;
+	height: 350px;
+	color: #111;
+	margin-top: -30px;
+	margin-bottom: -10px;
+	}
+
+	
+div.headingHome {
+	position: relative;
+	float: left;
+	left: 12%;
+	top: 15%;
+	width: 630px;
+	color: #111;
+	}
+/* besedilo */
+
+/* slika */
+
+div.slika {
+    position: relative;
+	float: right;
+    right: 13%;
+	top: 6%;
+	
+} 
+
+/* border */
+
+div.verticalBorderL {
+	position: absolute;
+	float:left;
+	border-left: medium solid #888;
+	left: 11.5%;
+	height: 150vh;
+}
+div.verticalBorderR {
+	position: absolute;
+	border-right: medium solid #888;
+	float:right;
+	right: 11.5%;
+	height: 150vh;
+}
+div.horizontalBorder {
+	position: absolute;
+	border: 5px solid #1E90FF;
+	margin-left:228px;
+	margin-top:160px;
+	width:74.8vw;
+}
+
+div.horizontalBorderhow {
+	position: absolute;
+	border: 5px solid #1E90FF;
+	margin-left:228px;
+	margin-top:360px;
+	width:74.8vw;
+}
+
+/* spodnji del */
+
+div.rep {
+	position: relative;
+	float:left;
+	left:12%;
+}
+
+h3 {
+	margin-top:10px;
+	font-size: 45px;
+	font-family: curier;
+}
+a {
+	color: black;
+}
+div.repdesno {
+	position: relative;
+	float:right;
+	right:20%;
+}
+
+#tbl {
+	width: 100%;
+	float: right;
+	background-color: #1E90FF;
+
+}
+
+/* p { */
+    /* line-height: 0px; */
+	/* margin-bottm: 0px; */
+/* } */
+
+thead {
+background-color: gray;
+display: block;
+}
+
+tbody {
+display: block;
+height: 351.2px;      
+overflow-y: auto;    
+overflow-x: hidden;
+background-color: tomato;
+}
+
+
+
