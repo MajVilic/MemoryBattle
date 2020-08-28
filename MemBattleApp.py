@@ -683,10 +683,8 @@ class Puzzless1Comp(Widget):
             else:
                 self.gameScore_list.append(self.ids.resultscore4.text)
                 Pop12.show_popup(self)
-                vstavi = "INSERT INTO `game` (`GameID`, `UserID`, `GameScore`,`Difficulty`, `NumberOfPlayers`) VALUES ('',%s,%s,%s,%s);"
-                vrednosti = (UserID_L[userIndex],userL[userIndex] + ': ' + self.gameScore_list[0] + '  ' + 'P2: ' + self.gameScore_list[1] + '  ' + 'P3: ' + self.gameScore_list[2] + '  ' + 'P4: ' + self.gameScore_list[3], self.class_instance[1][0], self.class_instance[0][0])
-                cursor.execute(vstavi, vrednosti)
-                connection.commit()
+                data['gamescore'] = userL[userIndex] + ': ' + self.gameScore_list[0] + '  ' + 'P2: ' + self.gameScore_list[1] + '  ' + 'P3: ' + self.gameScore_list[2] + '  ' + 'P4: ' + self.gameScore_list[3]
+                r = requests.post("http://Mega:8100/rezultati", data=json.dumps(data), headers=headers)
                 self.gameScore_list = []
                 self.parent.parent.current = 'mainlogin'
                 self.countswich = 0
