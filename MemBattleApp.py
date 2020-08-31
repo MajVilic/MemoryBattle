@@ -2,37 +2,18 @@ import kivy
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.widget import Widget
-from kivy.properties import ObjectProperty, NumericProperty, StringProperty
-from kivy.uix.screenmanager import Screen, ScreenManager, SlideTransition
+from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.uix.popup import Popup
-from kivy.animation import Animation
 from kivy.uix.floatlayout import FloatLayout
-import mysql.connector
-from mysql.connector import Error
-import getpass
 from MBlogicVrsta import pictures_matrix4, pictures_matrix5
 import hashlib
 import requests
 import json
-
-# try:
-#     connection = mysql.connector.connect(host='localhost',
-#                                          database='membattle',
-#                                          user='root',
-#                                          password='')
-#
-#     if connection.is_connected():
-#         db_Info = connection.get_server_info()
-#         print("Connected to MySQL Server version ", db_Info)
-#         cursor = connection.cursor()
-#         cursor.execute("select database();")
-#         record = cursor.fetchone()
-#         print("You're connected to database: ", record)
-# except Error as e:
-#     print("Error while connecting to MySQL", e)
+from mysql.connector import Error
+import mysql.connector
 
 def md5(string):
     return (hashlib.md5(string.encode('utf-8')).hexdigest())
@@ -61,9 +42,12 @@ class MyGridS(Widget):  #sign up
             return  #da se mi drugo ne izvede (ce ne mi pošlje v bazo prazne stringe)
         try:
             r = requests.post("http://Mega:8100/login", data=json.dumps(data), headers=headers)
-            Pop8.show_popup(self)
+            rstatus = r.status_code
+            if rstatus == 500:
+                Pop1.show_popup1(self)
+            else:
+                Pop8.show_popup(self)
         except Error as e:
-            print(e)
             Pop1.show_popup1(self)
 
 class MyGridT(Widget):  #Log in
@@ -76,6 +60,9 @@ class MyGridT(Widget):  #Log in
         userL =  []
         passL = []
         UserID_L = []
+        global UserID_L
+        global userL
+        global userIndex
         for i in mycursor:
             userL.append(i[0])
             passL.append(i[1])
@@ -84,9 +71,6 @@ class MyGridT(Widget):  #Log in
             Pop2.show_popup2(self)
         else:
             ind = userL.index(User.text)
-            global UserID_L
-            global userL
-            global userIndex
             userIndex = ind  #del namenjen samo za uporabo pri mainlogscreen
             if md5(Pass.text) == passL[ind]:
                 Pop4.switch(self)
@@ -670,7 +654,7 @@ class Puzzless1Comp(Widget):
             else:
                 self.gameScore_list.append(self.ids.resultscore4.text)
                 Pop11.show_popup(self)
-                data['gamescore'] = userL[userIndex] + ': ' + self.gameScore_list[0] + '  ' + 'P2: ' + self.gameScore_list[1] + '  ' + 'P3: ' + self.gameScore_list[2] + '  ' + 'P4: ' + self.gameScore_list[3]
+                data['gamescore'] = userL[userIndex] + ': ' + self.gameScore_list[0] + '  ' + 'P2: ' + self.gameScore_list[1] + '  ' + 'P3: ' + self.gameScore_list[2]
                 r = requests.post("http://Mega:8100/rezultati", data=json.dumps(data), headers=headers)
                 self.gameScore_list = []
                 self.parent.parent.current = 'mainlogin'
